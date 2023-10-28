@@ -1,4 +1,3 @@
-const {ModuleFederationPlugin} = require('webpack').container;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -58,25 +57,6 @@ module.exports = {
         ],
     },
     plugins: [
-        new ModuleFederationPlugin({
-            name: 'login',
-            filename: 'remoteEntry.js',
-            exposes: {
-                './Login': './src/Login',
-            },
-            shared: {
-                react: {
-                    singleton: true,
-                    eager: true,
-                    requiredVersion: '18.2.0',
-                },
-                'react-dom': {
-                    singleton: true,
-                    eager: true,
-                    requiredVersion: '18.2.0',
-                }
-            }
-        }),
         new CopyWebpackPlugin({
             patterns: [
                 {from: './public', globOptions: {ignore: ['**/index.html']}}

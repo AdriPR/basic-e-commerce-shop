@@ -1,7 +1,8 @@
 {
-  "name": "home",
+  "name": "basic-e-commerce-shop",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://localhost/build/",
   "dependencies": {
     "@babel/core": "^7.23.2",
     "@babel/plugin-transform-react-jsx": "^7.22.15",
@@ -13,9 +14,11 @@
     "html-webpack-plugin": "^5.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
     "react-router-dom": "^6.17.0",
     "style-loader": "^3.3.3",
     "terser-webpack-plugin": "^5.3.9",
+    "uglify-js": "^3.17.4",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   },
