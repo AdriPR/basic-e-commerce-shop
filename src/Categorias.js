@@ -5,7 +5,7 @@ function Categorias({categorias, setCategorias}) {
     //Change categoria.selected to true on click
     const handleClick = (e) => {
         const updatedCategorias = categorias.map(categoria => {
-            if (categoria.nombre_categoria === e.target.innerText) {
+            if (categoria.nombre === e.target.innerText) {
                 return { ...categoria, selected: true };
             } else {
                 return { ...categoria, selected: false };
@@ -30,7 +30,7 @@ function Categorias({categorias, setCategorias}) {
                 </li>
                 {categorias.map(categoria => (
                     <li key={categoria.id_categoria} className={categoria.selected ? 'selected' : ''}>
-                        <a onClick={handleClick}>{categoria.nombre_categoria}</a>
+                        <a onClick={handleClick}>{categoria.nombre}</a>
                     </li>
                 ))}
             </ul>

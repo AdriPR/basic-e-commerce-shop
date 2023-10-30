@@ -4,6 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 header('Access-Control-Allow-Origin: *');
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -15,7 +16,8 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-$sql = "SELECT id_categoria, nombre_categoria FROM CATEGORIA_PRODUCTO";
+$sql = "SELECT id_categoria, nombre FROM CATEGORIA";
+
 $result = $conn->query($sql);
 
 $categories = array();
@@ -33,4 +35,3 @@ $conn->close();
 header('Content-Type: application/json');
 
 echo json_encode($categories);
-?>
