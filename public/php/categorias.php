@@ -4,6 +4,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: Content-Type');
+header('Content-Type: application/json');
+header("Access-Control-Allow-Credentials: true");
+header("connection:keep-alive");
 
 $servername = "localhost";
 $username = "root";
@@ -32,6 +36,5 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 
-header('Content-Type: application/json');
-
 echo json_encode($categories);
+?>
