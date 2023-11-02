@@ -8,6 +8,8 @@ import Cart from "./Cart";
 
 function App() {
 
+    const [cartItems, setCartItems] = useState([]);
+    const[refreshCart, setRefreshCart] = useState(false);
     const [categorias, setCategorias] = useState([]);
     const isLoaded = categorias.length > 0;
     const [cantidadCarrito, setCantidadCarrito] = useState(0);
@@ -36,9 +38,19 @@ function App() {
             })
     }, []);
 
+    //Cambios en cartItems deben actualizar cantidadCarrito
+    useEffect(() => {
+        // contar cantidad de productos en cartItems
+        let cantidad = 0;
+        cartItems.forEach(item => {
+            cantidad += parseInt(item.cantidad);
+        });
+        setCantidadCarrito(cantidad);
+    }, [cartItems]);
+
     const routes = categorias.map(categoria => {
         const path = categoria.nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s/g, "-");
-        return (<Route key={categoria.id_categoria} path={`/${path}`} element={<Body selectedCategoria={categoria} cantidadCarrito={cantidadCarrito} setCantidadCarrito={setCantidadCarrito}/>}/>)
+        return (<Route key={categoria.id_categoria} path={`/${path}`} element={<Body selectedCategoria={categoria} setCartItems={setCartItems}/>}/>)
     });
 
     return (
@@ -49,7 +61,7 @@ function App() {
                     <Routes>
                         <Route exact path='/' element={<Body/>}/>
                         {routes}
-                        <Route exact path='/carrito' element={<Cart/>}/>
+                        <Route exact path='/carrito' element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>}/>
                     </Routes>
                 </Fragment>
             }
