@@ -1,14 +1,20 @@
 import React, {useState} from 'react';
 import {FaBars, FaTimes, FaUserCircle, FaRegUserCircle, FaShoppingCart} from 'react-icons/fa';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 function Header({categorias, cantidadCarrito}) {
 
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
 
     const handleMenuClick = () => {
         setIsOpen(!isOpen);
     };
+
+    const handleLiClick = (e) => {
+        const li = e.target.closest('li');
+        li.querySelector('a').click();
+    }
 
     return (
         <div className="header">
@@ -20,16 +26,14 @@ function Header({categorias, cantidadCarrito}) {
                     <div className={`menu-content ${isOpen ? 'open' : 'close'}`}>
                         <div className="categorias">
                             <ul className="categorias-list">
-                                <li key="Inicio"
-                                    className={categorias.every(categoria => !categoria.selected) ? 'selected' : ''}>
+                                <li key="Inicio" className={location.pathname === '/' ? 'selected' : ''} onClick={handleLiClick}>
                                     <Link to="/">Inicio</Link>
                                 </li>
                                 {categorias.map(categoria => {
                                     const path = categoria.nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s/g, "-");
 
                                     return (
-                                        <li key={categoria.id_categoria}
-                                            className={categoria.selected ? 'selected' : ''}>
+                                        <li key={categoria.id_categoria} className={location.pathname === `/${path}` ? 'selected' : ''} onClick={handleLiClick}>
                                             <Link to={path}>{categoria.nombre}</Link>
                                         </li>
                                     )
@@ -39,9 +43,11 @@ function Header({categorias, cantidadCarrito}) {
                     </div>
                 </div>
                 <div className="buttons">
-                    <button className="login-button"><FaUserCircle/> Login</button>
-                    <button className="register-button"><FaRegUserCircle/> Registrarse</button>
-                    <button className="cart-button"><FaShoppingCart/> Carrito ({cantidadCarrito})</button>
+                    <button className="btn btn-primary"><FaUserCircle/> Login</button>
+                    <button className="btn btn-primary"><FaRegUserCircle/> Registrarse</button>
+                    <Link to="/carrito" className="btn btn-primary">
+                        <FaShoppingCart/> Carrito ({cantidadCarrito})
+                    </Link>
                 </div>
             </nav>
         </div>

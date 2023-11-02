@@ -4,6 +4,7 @@ import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Body from './Body';
 import Header from "./Header";
+import Cart from "./Cart";
 
 function App() {
 
@@ -37,20 +38,20 @@ function App() {
 
     const routes = categorias.map(categoria => {
         const path = categoria.nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s/g, "-");
-        return (<Route key={categoria.id_categoria} path={`/${path}`} element={<Body selectedCategoria={categoria}/>}/>)
+        return (<Route key={categoria.id_categoria} path={`/${path}`} element={<Body selectedCategoria={categoria} cantidadCarrito={cantidadCarrito} setCantidadCarrito={setCantidadCarrito}/>}/>)
     });
 
     return (
         <Router>
             <Header categorias={categorias} cantidadCarrito={cantidadCarrito}/>
-            {!isLoaded ? <div className="loading">Loading...</div> : <div>
+            {!isLoaded ? <div className="loading">Loading...</div> :
                 <Fragment>
                     <Routes>
                         <Route exact path='/' element={<Body/>}/>
                         {routes}
+                        <Route exact path='/carrito' element={<Cart/>}/>
                     </Routes>
                 </Fragment>
-            </div>
             }
         </Router>
     );
