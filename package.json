@@ -26,6 +26,7 @@
   },
   "scripts": {
     "start": "webpack-cli serve --config webpack.config.js",
+    "start-php": "php -S localhost:8081 -t public/",
     "start-prod": "webpack-cli serve --config webpack.config.prod.js",
     "build": "webpack --config webpack.config.js",
     "build-prod": "webpack --config webpack.config.prod.js"

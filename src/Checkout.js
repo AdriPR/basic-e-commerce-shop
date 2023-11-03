@@ -27,7 +27,6 @@ function Checkout({cartItems}) {
                 alert("Por favor, complete todos los campos para realizar el checkout como usuario registrado.");
                 return;
             }
-            // Comprueba si existe un usuario con el correo electrónico introducido
             axios({
                 method: "post",
                 url: "http://localhost:8081/php/usuario_existe.php",
