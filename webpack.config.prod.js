@@ -8,7 +8,7 @@ module.exports = {
     mode: 'production',
     devtool: 'source-map',
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'web'),
         publicPath: 'auto',
     },
     optimization: {
@@ -28,7 +28,7 @@ module.exports = {
     },
     devServer: {
         hot: true,
-        static: path.resolve(__dirname, 'build'),
+        static: path.resolve(__dirname, 'web'),
         historyApiFallback: {
             index: 'index.html'
         },

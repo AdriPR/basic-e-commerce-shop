@@ -34,7 +34,7 @@ function Header({categorias, cantidadCarrito}) {
 
                                     return (
                                         <li key={categoria.id_categoria} className={location.pathname === `/${path}` ? 'selected' : ''} onClick={handleLiClick}>
-                                            <Link to={path}>{categoria.nombre}</Link>
+                                            <Link to={'/'+path}>{categoria.nombre}</Link>
                                         </li>
                                     )
                                 })}

@@ -62,7 +62,7 @@ function App() {
                         {routes}
                         <Route exact path='/carrito'
                                element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>}/>
-                        <Route exact path='/checkout' element={<Checkout cartItems={cartItems}/>}/>
+                        <Route exact path='/checkout' element={<Checkout cartItems={cartItems} setCartItems={setCartItems}/>}/>
                     </Routes>
                 </Fragment>
             }

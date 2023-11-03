@@ -2,7 +2,6 @@
   "name": "basic-e-commerce-shop",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://localhost/build/",
   "dependencies": {
     "@babel/core": "^7.23.2",
     "@babel/plugin-transform-react-jsx": "^7.22.15",

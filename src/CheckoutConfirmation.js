@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 function CheckoutConfirmation({guestEmail, guestAddress, fullName, registeredEmail, registeredAddress, onConfirm, onClose}) {
 
@@ -87,7 +88,9 @@ function CheckoutConfirmation({guestEmail, guestAddress, fullName, registeredEma
                     </div>
                 ))}
                 </div>
-                <button className="btn btn-primary" onClick={handleConfirmOrder}>Confirmar y enviar pedido</button>
+                <Link to="/">
+                    <button className="btn btn-primary" onClick={handleConfirmOrder}>Confirmar y enviar pedido</button>
+                </Link>
             </div>
         </div>
     );

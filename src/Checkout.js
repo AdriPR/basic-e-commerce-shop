@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import CheckoutConfirmation from "./CheckoutConfirmation";
 
-function Checkout({cartItems}) {
+function Checkout({cartItems, setCartItems}) {
     const [guestEmail, setGuestEmail] = useState("");
     const [guestAddress, setGuestAddress] = useState("");
     const [fullName, setFullName] = useState("");
@@ -59,7 +59,7 @@ function Checkout({cartItems}) {
                 withCredentials: true,
             });
         });
-        window.location.href = '/';
+        setCartItems([]);
     }
 
     return (
