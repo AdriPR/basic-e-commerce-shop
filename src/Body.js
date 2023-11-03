@@ -90,7 +90,7 @@ function Body({selectedCategoria, setCartItems}) {
                     <div className="col-md-10">
                         <p>{selectedProduct.descripcion}</p>
                     </div>
-                    <div className="row cart-item">
+                    <div className="row cart cart-item">
                         <div className="col-md-5"></div>
                         <div className="col-md-2">Precio: {parseFloat(selectedProduct.precio_actual).toFixed(2)}€</div>
                         <div className="col-md-3">

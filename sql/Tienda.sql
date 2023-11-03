@@ -1,3 +1,7 @@
+CREATE DATABASE Tienda;
+
+USE Tienda;
+
 -- Crear la tabla CLIENTE
 CREATE TABLE CLIENTE
 (

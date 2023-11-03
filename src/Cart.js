@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 function Cart({cartItems, setCartItems}) {
     const [itemsToDelete, setItemsToDelete] = useState([]);
@@ -82,7 +83,7 @@ function Cart({cartItems, setCartItems}) {
     };
 
     const cartItemList = cartItems.map((item) => (
-        <div key={item.id_producto} className="row cart-item">
+        <div key={item.id_producto} className="row cart cart-item">
             <div className="col-md-2">
                 <div className="image-placeholder">
                     <p className="image-text">Imagen</p>
@@ -124,6 +125,9 @@ function Cart({cartItems, setCartItems}) {
                                 {cartItemList}
                                 <h3>Total a pagar: {calculateTotalPrice()}€</h3>
                                 <div className="buttons">
+                                    <Link to="/checkout" className="btn btn-primary">
+                                        Checkout
+                                    </Link>
                                     <button className="btn btn-danger" onClick={clearCart}>
                                         Vaciar carrito
                                     </button>

@@ -12,7 +12,7 @@ header("connection:keep-alive");
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "PRA1";
+$dbname = "Tienda";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -21,10 +21,6 @@ if ($conn->connect_error) {
 }
 
 $id_categoria = isset($_GET['id_categoria']) ? $_GET['id_categoria'] : 2;
-
-// get all products from a category. first get all products id from table ASIGNAR
-// then get all products from table PRODUCTO
-// name and description from product can be obtained DESC_PROD atributes nombre and descripcion
 
 $sql = "SELECT p.id_producto, p.nombre, p.descripcion, p.precio_actual, p.imagen_url FROM PRODUCTO p WHERE p.id_categoria = $id_categoria";
 

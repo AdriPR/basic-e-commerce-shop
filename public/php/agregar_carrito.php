@@ -15,7 +15,6 @@ if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
 }
 
-// Decodificar el JSON recibido del cuerpo de la solicitud
 $request_body = file_get_contents('php://input');
 $producto = json_decode($request_body, true);
 

@@ -117,13 +117,7 @@ code {
     padding: 10px;
 }
 
-row .cart-item div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.row input {
+.row .cart input {
     width: 60px;
 }
 
@@ -179,6 +173,7 @@ row .cart-item div {
     padding: 20px;
     border: 1px solid #888;
     width: fit-content;
+    border-radius: 20px;
 }
 
 .popup .close {
@@ -192,4 +187,59 @@ row .cart-item div {
         text-decoration: none;
         cursor: pointer;
     }
+}
+
+.form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.row label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px
+}
+
+.row input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.popup .popup-content.checkout{
+    width: 50%;
+}
+
+.popup .popup-content.checkout .row {
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup .popup-content.checkout h5 {
+    margin-top: 5%;
+    margin-left: 5%;
+    text-align: left;
+}
+.popup .popup-content.checkout .row.user-info,
+.popup .popup-content.checkout .row.cart {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.popup .popup-content.checkout .row.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.popup .popup-content.checkout .row.user-info {
+    text-align: left;
 }
