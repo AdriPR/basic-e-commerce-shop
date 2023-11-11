@@ -15,14 +15,16 @@ CREATE TABLE CLIENTE_REGISTRADO
     nombre     VARCHAR(255)        NOT NULL,
     usuario    VARCHAR(255) UNIQUE NOT NULL,
     contraseña VARCHAR(255)        NOT NULL,
-    email      VARCHAR(255) UNIQUE NOT NULL
+    email      VARCHAR(255) UNIQUE NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES CLIENTE (id_cliente)
 );
 
 -- Crear la tabla CLIENTE_NO_REGISTRADO
 CREATE TABLE CLIENTE_NO_REGISTRADO
 (
     id_cliente INT PRIMARY KEY REFERENCES CLIENTE (id_cliente),
-    email      VARCHAR(255) UNIQUE NOT NULL
+    email      VARCHAR(255) UNIQUE NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES CLIENTE (id_cliente)
 );
 
 -- Crear la tabla CATEGORIA
@@ -50,7 +52,8 @@ CREATE TABLE PEDIDO
     id_pedido       INT AUTO_INCREMENT PRIMARY KEY,
     id_cliente      INT REFERENCES CLIENTE (id_cliente),
     direccion_envio VARCHAR(255) NOT NULL,
-    fecha_pedido    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    fecha_pedido    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_cliente) REFERENCES CLIENTE (id_cliente)
 );
 
 -- Crear la tabla DETALLES_PEDIDO
@@ -60,5 +63,7 @@ CREATE TABLE DETALLES_PEDIDO
     id_pedido       INT REFERENCES PEDIDO (id_pedido),
     id_producto     INT REFERENCES PRODUCTO (id_producto),
     cantidad        INT            NOT NULL CHECK (cantidad > 0),
-    precio_unitario DECIMAL(10, 2) NOT NULL
+    precio_unitario DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES PEDIDO (id_pedido),
+    FOREIGN KEY (id_producto) REFERENCES PRODUCTO (id_producto)
 );
