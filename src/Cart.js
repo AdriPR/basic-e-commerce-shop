@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
@@ -11,12 +11,14 @@ function Cart({cartItems, setCartItems}) {
             withCredentials: true,
         })
             .then((response) => {
-                setCartItems(response.data);
+                if (JSON.stringify(response.data) !== JSON.stringify(cartItems)) {
+                    setCartItems(response.data);
+                }
             })
             .catch((error) => {
                 console.error("Error fetching cart items:", error);
             });
-    }, []);
+    }, [cartItems]);
 
     const removeFromCart = (productId) => {
         const confirmDelete = window.confirm(
@@ -27,11 +29,15 @@ function Cart({cartItems, setCartItems}) {
             axios({
                 method: "delete",
                 url: "http://localhost:8081/php/eliminar_del_carrito.php",
-                data: { id_producto: productId },
+                data: {id_producto: productId},
                 withCredentials: true,
-            });
+            }).then((response) => {
+                setCartItems(response.data);
+            })
+                .catch((error) => {
+                    console.error("Error removing item from cart:", error);
+                });
         }
-        window.location.reload();
     };
 
     const clearCart = () => {
@@ -45,11 +51,15 @@ function Cart({cartItems, setCartItems}) {
                 axios({
                     method: "delete",
                     url: "http://localhost:8081/php/eliminar_del_carrito.php",
-                    data: { id_producto: productId },
+                    data: {id_producto: productId},
                     withCredentials: true,
-                });
+                }).then((response) => {
+                    setCartItems(response.data);
+                })
+                    .catch((error) => {
+                        console.error("Error removing item from cart:", error);
+                    });
             });
-            window.location.reload();
         }
     };
 
@@ -66,7 +76,7 @@ function Cart({cartItems, setCartItems}) {
             setCartItems(
                 cartItems.map((item) => {
                     if (item.id_producto === productId) {
-                        return { ...item, cantidad: quantity };
+                        return {...item, cantidad: quantity};
                     }
                     return item;
                 })

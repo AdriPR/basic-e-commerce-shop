@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 
-function Body({selectedCategoria, setCartItems}) {
+function Body({selectedCategoria, setCartItems, searchTerm}) {
 
     const [productos, setProductos] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     useEffect(() => {
-        if (selectedCategoria) {
+        if (searchTerm) {
             axios({
                 method: "get",
-                url: "http://localhost:8081/php/productos.php",
+                url: "http://localhost:8081/php/buscar_productos.php",
                 params: {
-                    id_categoria: selectedCategoria.id_categoria,
+                    nombre: searchTerm,
                 },
             })
                 .then((response) => {
@@ -21,8 +21,23 @@ function Body({selectedCategoria, setCartItems}) {
                 .catch((error) => {
                     console.error("Error fetching productos:", error);
                 });
-        }
-    }, [selectedCategoria]);
+        } else if (selectedCategoria) {
+                axios({
+                    method: "get",
+                    url: "http://localhost:8081/php/productos.php",
+                    params: {
+                        id_categoria: selectedCategoria.id_categoria,
+                    },
+                })
+                    .then((response) => {
+                        setProductos(response.data);
+                    })
+                    .catch((error) => {
+                        console.error("Error fetching productos:", error);
+                    });
+            }
+
+    }, [selectedCategoria, searchTerm]);
 
     const addToCart = (producto) => {
         axios({
@@ -118,9 +133,9 @@ function Body({selectedCategoria, setCartItems}) {
         <div className="body">
             <div className="container">
                 <div className="row">
-                    {selectedCategoria ? (
+                    {selectedCategoria || searchTerm ? (
                         <div>
-                            <h1>{selectedCategoria.nombre}</h1>
+                            {searchTerm ? (<h1>Resultados</h1>) : (<h1>{selectedCategoria.nombre}</h1>)}
                             <div className="row">
                                 {productList}
                             </div>

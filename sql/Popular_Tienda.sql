@@ -28,13 +28,17 @@ VALUES (7, 'pedro@example.com'),
        (10, 'david@example.com');
 
 -- Insertar datos en la tabla CATEGORIA
-INSERT INTO CATEGORIA (id_categoria, nombre)
-VALUES (1, 'Electrónica'),
-       (2, 'Ropa'),
-       (3, 'Libros'),
-       (4, 'Música'),
-       (5, 'Cine'),
-       (6, 'Videojuegos');
+INSERT INTO CATEGORIA (id_categoria, nombre, mostrar)
+VALUES (1, 'Electrónica', TRUE),
+       (2, 'Ropa', TRUE),
+       (3, 'Libros', TRUE),
+       (4, 'Música', TRUE),
+       (5, 'Cine', TRUE),
+       (6, 'Videojuegos', TRUE),
+       (7, 'Deportes', FALSE),
+       (8, 'Hogar', FALSE),
+       (9, 'Juguetes', FALSE),
+       (10, 'Alimentación', FALSE);
 
 -- Insertar datos en la tabla PRODUCTO
 INSERT INTO PRODUCTO (id_producto, id_categoria, nombre, descripcion, precio_actual, imagen_url)
@@ -58,4 +62,5 @@ VALUES (DEFAULT, 1, 'Smartphone', 'Smartphone de última generación con pantall
        (DEFAULT, 6, 'Consola', 'Consola de videojuegos con un mando inalámbrico y varios juegos incluidos', 300.00,
         'consola.jpg'),
        (DEFAULT, 6, 'Juego', 'Juego de videojuegos con una historia apasionante y un modo multijugador', 50.00,
-        'juego.jpg');
+        'juego.jpg'),
+        (DEFAULT, 7, 'Malvaviscos', '¡La comida favorita de Feldespato! flag{V2VsY29tZQ==}', 2.00, 'malvaviscos.jpg'),

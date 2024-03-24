@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FaBars, FaTimes, FaUserCircle, FaRegUserCircle, FaShoppingCart} from 'react-icons/fa';
 import {Link, useLocation} from "react-router-dom";
 
-function Header({categorias, cantidadCarrito}) {
+function Header({categorias, cantidadCarrito, searchTerm, setSearchTerm}) {
 
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +16,10 @@ function Header({categorias, cantidadCarrito}) {
         li.querySelector('a').click();
     }
 
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
     return (
         <div className="header">
             <nav className="nav">
@@ -26,15 +30,18 @@ function Header({categorias, cantidadCarrito}) {
                     <div className={`menu-content ${isOpen ? 'open' : 'close'}`}>
                         <div className="categorias">
                             <ul className="categorias-list">
-                                <li key="Inicio" className={location.pathname === '/' ? 'selected' : ''} onClick={handleLiClick}>
+                                <li key="Inicio" className={location.pathname === '/' ? 'selected' : ''}
+                                    onClick={handleLiClick}>
                                     <Link to="/">Inicio</Link>
                                 </li>
                                 {categorias.map(categoria => {
                                     const path = categoria.nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s/g, "-");
 
                                     return (
-                                        <li key={categoria.id_categoria} className={location.pathname === `/${path}` ? 'selected' : ''} onClick={handleLiClick}>
-                                            <Link to={'/'+path}>{categoria.nombre}</Link>
+                                        <li key={categoria.id_categoria}
+                                            className={location.pathname === `/${path}` ? 'selected' : ''}
+                                            onClick={handleLiClick}>
+                                            <Link to={'/' + path}>{categoria.nombre}</Link>
                                         </li>
                                     )
                                 })}
@@ -42,9 +49,13 @@ function Header({categorias, cantidadCarrito}) {
                         </div>
                     </div>
                 </div>
+                <div className="search">
+                    <input type="text" value={searchTerm} onChange={handleSearchChange}
+                           placeholder="Buscar productos..."/>
+                </div>
                 <div className="buttons">
-                    <button className="btn btn-primary"><FaUserCircle/> Login</button>
-                    <button className="btn btn-primary"><FaRegUserCircle/> Registrarse</button>
+                    {/*<button className="btn btn-primary"><FaUserCircle/> Login</button>*/}
+                    {/*<button className="btn btn-primary"><FaRegUserCircle/> Registrarse</button>*/}
                     <Link to="/carrito" className="btn btn-primary">
                         <FaShoppingCart/> Carrito ({cantidadCarrito})
                     </Link>

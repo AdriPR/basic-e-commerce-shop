@@ -13,6 +13,7 @@ function App() {
     const [categorias, setCategorias] = useState([]);
     const isLoaded = categorias.length > 0;
     const [cantidadCarrito, setCantidadCarrito] = useState(0);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         axios({
@@ -49,16 +50,16 @@ function App() {
     const routes = categorias.map(categoria => {
         const path = categoria.nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s/g, "-");
         return (<Route key={categoria.id_categoria} path={`/${path}`}
-                       element={<Body selectedCategoria={categoria} setCartItems={setCartItems}/>}/>)
+                       element={<Body selectedCategoria={categoria} setCartItems={setCartItems} searchTerm={searchTerm}/>}/>)
     });
 
     return (
         <Router>
-            <Header categorias={categorias} cantidadCarrito={cantidadCarrito}/>
+            <Header categorias={categorias} cantidadCarrito={cantidadCarrito} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
             {!isLoaded ? <div className="loading">Loading...</div> :
                 <Fragment>
                     <Routes>
-                        <Route exact path='/' element={<Body/>}/>
+                        <Route exact path='/' element={<Body searchTerm={searchTerm}/>}/>
                         {routes}
                         <Route exact path='/carrito'
                                element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>}/>

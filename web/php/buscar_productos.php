@@ -1,5 +1,4 @@
 <?php
-// Habilitar la visualización de errores
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -20,9 +19,9 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-$id_categoria = isset($_GET['id_categoria']) ? $_GET['id_categoria'] : 2;
+$nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 
-$sql = "SELECT p.id_producto, p.nombre, p.descripcion, p.precio_actual, p.imagen_url FROM PRODUCTO p WHERE p.id_categoria = $id_categoria";
+$sql = "SELECT p.id_producto, p.nombre, p.descripcion, p.precio_actual, p.imagen_url FROM PRODUCTO p JOIN CATEGORIA c ON p.id_categoria = c.id_categoria WHERE c.mostrar = 1 AND p.nombre LIKE '%$nombre%'";
 
 $result = $conn->query($sql);
 
