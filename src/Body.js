@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import {apiHost} from "./Constants";
 
 function Body({selectedCategoria, setCartItems, searchTerm}) {
 
@@ -10,7 +11,7 @@ function Body({selectedCategoria, setCartItems, searchTerm}) {
         if (searchTerm) {
             axios({
                 method: "get",
-                url: "http://localhost:8081/php/buscar_productos.php",
+                url: apiHost + "/php/buscar_productos.php",
                 params: {
                     nombre: searchTerm,
                 },
@@ -24,7 +25,7 @@ function Body({selectedCategoria, setCartItems, searchTerm}) {
         } else if (selectedCategoria) {
                 axios({
                     method: "get",
-                    url: "http://localhost:8081/php/productos.php",
+                    url: apiHost + "/php/productos.php",
                     params: {
                         id_categoria: selectedCategoria.id_categoria,
                     },
@@ -42,7 +43,7 @@ function Body({selectedCategoria, setCartItems, searchTerm}) {
     const addToCart = (producto) => {
         axios({
             method: "post",
-            url: "http://localhost:8081/php/agregar_carrito.php",
+            url: apiHost + "/php/agregar_carrito.php",
             data: {
                 id_producto: producto.id_producto,
                 nombre: producto.nombre,

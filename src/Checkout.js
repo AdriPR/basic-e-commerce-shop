@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CheckoutConfirmation from "./CheckoutConfirmation";
+import {apiHost} from "./Constants";
 
 function Checkout({cartItems, setCartItems}) {
     const [guestEmail, setGuestEmail] = useState("");
@@ -29,7 +30,7 @@ function Checkout({cartItems, setCartItems}) {
             }
             axios({
                 method: "post",
-                url: "http://localhost:8081/php/usuario_existe.php",
+                url: apiHost + "/php/usuario_existe.php",
                 data: { email: registeredEmail,
                         password: password },
                 withCredentials: true,
@@ -54,7 +55,7 @@ function Checkout({cartItems, setCartItems}) {
         productIds.forEach((productId) => {
             axios({
                 method: "delete",
-                url: "http://localhost:8081/php/eliminar_del_carrito.php",
+                url: apiHost + "/php/eliminar_del_carrito.php",
                 data: { id_producto: productId },
                 withCredentials: true,
             });

@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {apiHost} from "./Constants";
 
 function Cart({cartItems, setCartItems}) {
     const [itemsToDelete, setItemsToDelete] = useState([]);
 
     useEffect(() => {
         axios({
-            url: "http://localhost:8081/php/recuperar_carrito.php",
-            withCredentials: true,
+            url: apiHost + "/php/recuperar_carrito.php",
+            withCredentials: true
         })
             .then((response) => {
                 if (JSON.stringify(response.data) !== JSON.stringify(cartItems)) {
@@ -28,7 +29,7 @@ function Cart({cartItems, setCartItems}) {
             setItemsToDelete([...itemsToDelete, productId]);
             axios({
                 method: "delete",
-                url: "http://localhost:8081/php/eliminar_del_carrito.php",
+                url: apiHost + "/php/eliminar_del_carrito.php",
                 data: {id_producto: productId},
                 withCredentials: true,
             }).then((response) => {
@@ -50,7 +51,7 @@ function Cart({cartItems, setCartItems}) {
             productIds.forEach((productId) => {
                 axios({
                     method: "delete",
-                    url: "http://localhost:8081/php/eliminar_del_carrito.php",
+                    url: apiHost + "/php/eliminar_del_carrito.php",
                     data: {id_producto: productId},
                     withCredentials: true,
                 }).then((response) => {
@@ -66,12 +67,12 @@ function Cart({cartItems, setCartItems}) {
     const updateQuantity = (cartItems, productId, quantity) => {
         axios({
             method: "post",
-            url: "http://localhost:8081/php/actualizar_cantidad_carrito.php",
+            url: apiHost + "/php/actualizar_cantidad_carrito.php",
             data: {
                 id_producto: productId,
                 cantidad: quantity,
             },
-            withCredentials: true,
+            withCredentials: true
         }).then((response) => {
             setCartItems(
                 cartItems.map((item) => {

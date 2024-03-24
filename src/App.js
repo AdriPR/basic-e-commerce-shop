@@ -6,6 +6,7 @@ import Body from './Body';
 import Header from "./Header";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
+import {apiHost} from "./Constants";
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://localhost:8081/php/categorias.php'
+            url: apiHost + "/php/categorias.php"
         })
             .then(response => {
                 const categoriasWithSelection = response.data.map(categoria => {
@@ -31,7 +32,7 @@ function App() {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://localhost:8081/php/cantidad_carrito.php',
+            url: apiHost + "/php/cantidad_carrito.php",
             withCredentials: true
         })
             .then(response => {
@@ -49,7 +50,7 @@ function App() {
 
     const routes = categorias.map(categoria => {
         const path = categoria.nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s/g, "-");
-        return (<Route key={categoria.id_categoria} path={`/${path}`}
+        return (<Route key={categoria.id_categoria} exact path={`/${path}`}
                        element={<Body selectedCategoria={categoria} setCartItems={setCartItems} searchTerm={searchTerm}/>}/>)
     });
 

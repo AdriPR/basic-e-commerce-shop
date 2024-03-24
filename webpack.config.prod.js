@@ -28,7 +28,6 @@ module.exports = {
     },
     devServer: {
         hot: true,
-        static: path.resolve(__dirname, 'web'),
         historyApiFallback: {
             index: 'index.html'
         },

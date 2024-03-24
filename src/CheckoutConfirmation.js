@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {apiHost} from "./Constants";
 
 function CheckoutConfirmation({guestEmail, guestAddress, fullName, registeredEmail, registeredAddress, onConfirm, onClose}) {
 
@@ -8,7 +9,7 @@ function CheckoutConfirmation({guestEmail, guestAddress, fullName, registeredEma
 
     useEffect(() => {
             axios({
-                url: "http://localhost:8081/php/recuperar_carrito.php",
+                url: apiHost + "/php/recuperar_carrito.php",
                 withCredentials: true,
             })
                 .then((response) => {
@@ -32,7 +33,7 @@ function CheckoutConfirmation({guestEmail, guestAddress, fullName, registeredEma
         axios(
             {
                 method: 'post',
-                url: 'http://localhost:8081/php/pedido.php',
+                url: apiHost + "/php/pedido.php",
                 data: orderData,
                 withCredentials: true
             }
