@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FaBars, FaTimes, FaUserCircle, FaRegUserCircle, FaShoppingCart} from 'react-icons/fa';
+import {FaBars, FaTimes, FaUserCircle, FaRegUserCircle, FaShoppingCart, FaFlag} from 'react-icons/fa';
 import {Link, useLocation} from "react-router-dom";
 
 function Header({categorias, cantidadCarrito, searchTerm, setSearchTerm}) {
@@ -54,8 +54,9 @@ function Header({categorias, cantidadCarrito, searchTerm, setSearchTerm}) {
                            placeholder="Buscar productos..."/>
                 </div>
                 <div className="buttons">
-                    {/*<button className="btn btn-primary"><FaUserCircle/> Login</button>*/}
-                    {/*<button className="btn btn-primary"><FaRegUserCircle/> Registrarse</button>*/}
+                    <Link to="/flags" className="btn btn-primary">
+                        <FaFlag/>
+                    </Link>
                     <Link to="/carrito" className="btn btn-primary">
                         <FaShoppingCart/> Carrito ({cantidadCarrito})
                     </Link>

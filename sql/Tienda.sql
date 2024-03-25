@@ -70,7 +70,7 @@ CREATE TABLE DETALLES_PEDIDO
 );
 
 -- Insertar datos en la tabla CLIENTE
-INSERT INTO CLIENTE VALUES (), (), (), (), (), (), (), (), (), ();
+INSERT INTO CLIENTE VALUES (), (), (), (), (), (), (), (), (), (), ();
 
 -- Insertar datos en la tabla CLIENTE_REGISTRADO
 INSERT INTO CLIENTE_REGISTRADO (id_cliente, nombre, usuario, contraseña, email)
@@ -125,4 +125,4 @@ VALUES (1, 'Smartphone', 'Smartphone de última generación con pantalla OLED y 
         'consola.jpg'),
        (6, 'Juego', 'Juego de videojuegos con una historia apasionante y un modo multijugador', 50.00,
         'juego.jpg'),
-       (7, 'Malvaviscos', '¡La comida favorita de Feldespar!', 2.00, 'malvaviscos.jpg');
+       (7, 'Malvaviscos', '¡La comida favorita de Gabbro!', 2.00, 'malvaviscos.jpg');

@@ -7,6 +7,7 @@ import Header from "./Header";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
 import {apiHost} from "./Constants";
+import Flags from "./Flags";
 
 function App() {
 
@@ -60,6 +61,7 @@ function App() {
             {!isLoaded ? <div className="loading">Loading...</div> :
                 <Fragment>
                     <Routes>
+                        <Route exact path='/flags' element={<Flags/>}/>
                         <Route exact path='/' element={<Body searchTerm={searchTerm}/>}/>
                         {routes}
                         <Route exact path='/carrito'
