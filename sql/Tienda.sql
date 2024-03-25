@@ -74,19 +74,20 @@ INSERT INTO CLIENTE VALUES (), (), (), (), (), (), (), (), (), ();
 
 -- Insertar datos en la tabla CLIENTE_REGISTRADO
 INSERT INTO CLIENTE_REGISTRADO (id_cliente, nombre, usuario, contraseña, email)
-VALUES (1, 'Ana', 'ana123', 'ana123', 'ana@example.com'),
-       (2, 'Carlos', 'carlos34', 'carlos456', 'carlos@example.com'),
-       (3, 'Lucía', 'lulu33', 'lucia789', 'lucia@example.com'),
-       (4, 'Pedro', 'pedro123', 'pedro123', 'pedro@example.com'),
-       (5, 'María', 'maria456', 'maria456', 'maria@example.com'),
-       (6, 'Juan', 'juan789', 'juan789', 'juan@example.com');
+VALUES (1, 'Riebeck', 'riebeck', 'I.Play_Th3_8anjo', 'riebeck@lumbre.com')
+       (2, 'Ana', 'ana123', 'ana123', 'ana@example.com'),
+       (3, 'Carlos', 'carlos34', 'carlos456', 'carlos@example.com'),
+       (4, 'Lucía', 'lulu33', 'lucia789', 'lucia@example.com'),
+       (5, 'Pedro', 'pedro123', 'pedro123', 'pedro@example.com'),
+       (6, 'María', 'maria456', 'maria456', 'maria@example.com'),
+       (7, 'Juan', 'juan789', 'juan789', 'juan@example.com');
 
 -- Insertar datos en la tabla CLIENTE_NO_REGISTRADO
 INSERT INTO CLIENTE_NO_REGISTRADO (id_cliente, email)
-VALUES (7, 'pedro@example.com'),
-       (8, 'maria@example.com'),
-       (9, 'laura@example.com'),
-       (10, 'david@example.com');
+VALUES (8, 'pedro@example.com'),
+       (9, 'maria@example.com'),
+       (10, 'laura@example.com'),
+       (11, 'david@example.com');
 
 -- Insertar datos en la tabla CATEGORIA
 INSERT INTO CATEGORIA (id_categoria, nombre, mostrar)
@@ -124,4 +125,4 @@ VALUES (1, 'Smartphone', 'Smartphone de última generación con pantalla OLED y 
         'consola.jpg'),
        (6, 'Juego', 'Juego de videojuegos con una historia apasionante y un modo multijugador', 50.00,
         'juego.jpg'),
-       (7, 'Malvaviscos', '¡La comida favorita de Feldespato! flag{V2VsY29tZQ==}', 2.00, 'malvaviscos.jpg');
+       (7, 'Malvaviscos', '¡La comida favorita de Feldespar!', 2.00, 'malvaviscos.jpg');

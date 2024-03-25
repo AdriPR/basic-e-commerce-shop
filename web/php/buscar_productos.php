@@ -10,7 +10,7 @@ header("connection:keep-alive");
 
 $servername = "localhost";
 $username = "riebeck";
-$password = "malvavisco";
+$password = "I.Play_Th3_8anjo";
 $dbname = "Tienda";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
