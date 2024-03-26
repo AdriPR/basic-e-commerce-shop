@@ -74,7 +74,7 @@ INSERT INTO CLIENTE VALUES (), (), (), (), (), (), (), (), (), (), ();
 
 -- Insertar datos en la tabla CLIENTE_REGISTRADO
 INSERT INTO CLIENTE_REGISTRADO (id_cliente, nombre, usuario, contraseña, email)
-VALUES (1, 'Riebeck', 'riebeck', 'I.Play_Th3_8anjo', 'riebeck@lumbre.com')
+VALUES (1, 'Riebeck', 'riebeck', 'I.Play_Th3_8anjo', 'riebeck@lumbre.com'),
        (2, 'Ana', 'ana123', 'ana123', 'ana@example.com'),
        (3, 'Carlos', 'carlos34', 'carlos456', 'carlos@example.com'),
        (4, 'Lucía', 'lulu33', 'lucia789', 'lucia@example.com'),
