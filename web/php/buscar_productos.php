@@ -21,7 +21,9 @@ if ($conn->connect_error) {
 
 $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 
-$sql = "SELECT p.id_producto, p.nombre, p.descripcion, p.precio_actual, p.imagen_url FROM PRODUCTO p JOIN CATEGORIA c ON p.id_categoria = c.id_categoria WHERE c.mostrar = 1 AND p.nombre LIKE '%$nombre%'";
+$sql = "SELECT p.id_producto, p.nombre, p.descripcion, p.precio_actual, p.imagen_url
+        FROM PRODUCTO p JOIN CATEGORIA c ON p.id_categoria = c.id_categoria WHERE c.mostrar = 1
+        AND p.nombre LIKE '%$nombre%'";
 
 $result = $conn->query($sql);
 
@@ -38,3 +40,5 @@ $conn->close();
 echo json_encode($products);
 
 ?>
+
+

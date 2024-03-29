@@ -6,7 +6,6 @@ const path = require('path');
 module.exports = {
     entry: './src/index.js',
     mode: 'production',
-    devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, 'web'),
         publicPath: 'auto',
