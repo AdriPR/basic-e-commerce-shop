@@ -22,9 +22,13 @@ if ($conn->connect_error) {
 
 $id_categoria = isset($_GET['id_categoria']) ? $_GET['id_categoria'] : 2;
 
-$sql = "SELECT p.id_producto, p.nombre, p.descripcion, p.precio_actual, p.imagen_url FROM PRODUCTO p WHERE p.id_categoria = $id_categoria";
+$sql = "SELECT p.id_producto, p.nombre, p.descripcion, p.precio_actual, p.imagen_url FROM PRODUCTO p WHERE p.id_categoria = ?";
 
-$result = $conn->query($sql);
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_categoria);
+$stmt->execute();
+
+$result = $stmt->get_result();
 
 $products = array();
 
