@@ -12,10 +12,27 @@ function Flags() {
 
     const handleInputSubmit = (event) => {
         event.preventDefault();
-        if (inputText === 'Welcome to Outer Wilds Ventures') {
-            setIsValid(true);
+        let validFlags = 0;
+        if(inputText.includes('Welcome')){
+            validFlags++;
+        }
+        if(inputText.includes('to')){
+            validFlags++;
+        }
+        if(inputText.includes('Outer Wilds')){
+            validFlags++;
+        }
+        if(inputText.includes('Ventures')){
+            validFlags++;
+        }
+        if (validFlags === 4) {
+            if(inputText === 'Welcome to Outer Wilds Ventures'){
+                setIsValid(true);
+            }else{
+                alert('¡Casi! Revisa el orden de las coordenadas');
+            }
         } else {
-            alert('Coordenadas incorrectas. Inténtalo de nuevo.');
+            alert(`${validFlags}/4 coordenadas correctas`);
         }
     };
 
