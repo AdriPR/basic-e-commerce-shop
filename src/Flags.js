@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import background from '/public/OW.jpg'
 import EyeOfTheUniverse from "./EyeOfTheUniverse";
+import Cheatsheet from "./Cheatsheet";
 
 function Flags() {
     const [inputText, setInputText] = useState('');
     const [isValid, setIsValid] = useState(false);
+    const [showCheatsheet, setShowCheatsheet] = useState(false);
 
     const handleInputChange = (event) => {
         setInputText(event.target.value);
@@ -46,8 +48,11 @@ function Flags() {
                     onChange={handleInputChange}
                 />
                 <button className="btn btn-primary" type="submit">Enviar</button>
+                <button className="btn btn-secondary" type="button" onClick={() => setShowCheatsheet(true)}>Cheatsheet
+                </button>
             </form>
             {isValid && <EyeOfTheUniverse onClose={() => setIsValid(false)}/>}
+            {showCheatsheet && <Cheatsheet onClose={() => setShowCheatsheet(false)}/>}
         </div>
     );
 }
